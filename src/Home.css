@@ -1,0 +1,30 @@
+/* carousel */
+.carousel {
+  width: 100%;
+  overflow: hidden;
+}
+
+.slide {
+  display: inline-block;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.5s ease-in-out;
+}
+
+.slide img {
+  width: 100%;
+  height: 100%;
+}
+
+@keyframes carousel {
+  from { transform: translateX(0); }
+  to { transform: translateX(-100%); }
+}
+
+.carousel .slide:first-child {
+  animation: carousel 15s infinite;
+}
+
+.carousel:hover .slide {
+  animation-play-state: paused;
+}

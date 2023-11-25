@@ -1,0 +1,22 @@
+.schoolname {
+
+  color: white;
+  background-color: #b30202;
+  display:flex ;
+  flex-direction: column;
+ align-items: center;
+ justify-content: center;
+font-size: 1.5rem;
+font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+/* Adjust font size for smaller screens */
+@media (max-width: 768px) {
+  .schoolname  {
+    font-size: 1rem;
+  }
+}
+@media (max-width: 480px) {
+  .schoolname  {
+    font-size: 0.5rem;
+  }
+}
