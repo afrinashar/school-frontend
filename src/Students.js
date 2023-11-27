@@ -29,7 +29,8 @@ const Students=()=>{
     photo.name.toLowerCase().includes(searchTerm.toLowerCase())
     );
     console.log(filteredPhotos,"filteredPhotos");
-
+//Total
+//const Total = {student.marks.tamil}+{student.marks.english}+{student.marks.mathmaticals}+ {student.marks.science}+{student.marks.socialscience}
 
     // Sorting logic
  const sortedPhotos = [...filteredPhotos].sort((a, b) => {
@@ -64,7 +65,7 @@ const Students=()=>{
         {students.map((student) => (
           <tr key={student.student_id}>
             <td>{student.student_id}</td>
-            <td>{student.name}</td>
+            <td>{student.name} </td>
             <td>{student.age}</td>
             <td>{student.grade_level}</td>
             <td>
@@ -73,6 +74,7 @@ const Students=()=>{
             <td>
               {`Tamil: ${student.marks.tamil}, English: ${student.marks.english}, Mathematics: ${student.marks.mathmaticals}, Science: ${student.marks.science}, Social Science: ${student.marks.socialscience}`}
             </td>
+          <td><button  ></button></td>
           </tr>
         ))}
       </tbody>

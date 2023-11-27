@@ -28,3 +28,31 @@ export const deleteStudent = async (studentId) => {
   const response = await api.delete(`/students/${studentId}`);
   return response.data;
 };
+
+
+
+//teachers
+
+
+export const getTeacher = async () => {
+  const response = await api.get('/students');
+  return response.data;
+};
+export const getTeachertyId = async (studentId) => {
+    const response = await api.get(`/students/${studentId}`);
+    return response.data;
+  };
+export const createTeacher = async (studentData) => {
+  const response = await api.post('/students', studentData);
+  return response.data;
+};
+
+export const updateTeacher = async (studentId, studentData) => {
+  const response = await api.put(`/students/${studentId}`, studentData);
+  return response.data;
+};
+
+export const deleteTeacher = async (studentId) => {
+  const response = await api.delete(`/students/${studentId}`);
+  return response.data;
+};
