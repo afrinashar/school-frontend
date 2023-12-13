@@ -25,8 +25,8 @@ const Header=()=>{
               </Offcanvas.Header>
               <Offcanvas.Body>
                 <Nav className="justify-content-end flex-grow-1 pe-3">
-                  <Nav.Link href="#action1"><Link to={"/students"}>Students Details</Link> </Nav.Link>
-                  <Nav.Link href="#action2"><Link to={"/teachers"}>Teachers Details </Link></Nav.Link>
+                  <Nav.Link   ><Link className='head' to={"/students"}>Students Details</Link> </Nav.Link>
+                  <Nav.Link  ><Link className='head' to={"/teachers"}>Teachers Details </Link></Nav.Link>
                   <NavDropdown
                     title="user"
                     id={`offcanvasNavbarDropdown-expand-${expand}`}

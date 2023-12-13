@@ -3,10 +3,16 @@ import { Link } from "react-router-dom";
 import Header from "./Header";
 import Carousel from "react-bootstrap/Carousel";
 import Accordion from "react-bootstrap/Accordion";
+import ReactPlayer from 'react-player/lazy'
 const Home = () => {
   return (
     <>
       <Header />
+      <ReactPlayer
+     width='100%'
+     height='100%'
+
+      url='https://youtu.be/7xCe2m0kiSg?si=_xTGOU9rXIoU6Mdo' />
       <Carousel
         style={{
           height: "25rem",
@@ -16,6 +22,7 @@ const Home = () => {
         }}
         fade
       >
+        
         <Carousel.Item>
           <img
             className="d-block m-5 w-100"
@@ -54,6 +61,9 @@ const Home = () => {
           </Carousel.Caption>
         </Carousel.Item>
       </Carousel>
+
+
+
       <div className="d-inline">
         {" "}
         <button type="button" class="btn m-5 btn-danger">
