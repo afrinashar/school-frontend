@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import {Form} from 'react-bootstrap';
 import {Link} from "react-router-dom" ; 
-import Contact from './Contact';
+//import Contact from './Contact';
 import Pagination from 'react-bootstrap/Pagination';
 import { getTeacher } from './api';
 const Teachers=()=>{
@@ -40,7 +40,7 @@ const Teachers=()=>{
   });
 
     return(<>
-     <Link to={"/"}>back to home</Link>
+     <Link to={"/"} className=' btn btn-outline-warning  border-0 text-black'>back to home</Link> <h1>teachers Details</h1>
     <Form className="d-flex">
     <Form.Control
       type="search"
@@ -49,8 +49,8 @@ const Teachers=()=>{
       aria-label="Search"
     />
    
-  </Form>   <button className="btn btn-outline-info">Add teacher</button>
-    <h1>teachers Details</h1>
+  </Form>   <button className="btn btn-outline-warning"><span className='text-black'>Add teacher</span></button>
+   
     <table className="table">
       <thead>
         <tr>
@@ -80,7 +80,7 @@ const Teachers=()=>{
         ))}
       </tbody>
     </table>
-    <Contact></Contact>
+    
   </>)
 }
 export default Teachers

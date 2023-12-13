@@ -25,8 +25,8 @@ const Header=()=>{
               </Offcanvas.Header>
               <Offcanvas.Body>
                 <Nav className="justify-content-end flex-grow-1 pe-3">
-                  <Nav.Link   ><Link className='head' to={"/students"}>Students Details</Link> </Nav.Link>
-                  <Nav.Link  ><Link className='head' to={"/teachers"}>Teachers Details </Link></Nav.Link>
+                  <Nav.Link   ><Link className='head  btn btn-outline-warning' to={"/students"}><span className='text-black'>Students Details</span></Link> </Nav.Link>
+                  <Nav.Link  ><Link className='head btn btn-outline-warning' to={"/teachers"}><span className='text-black'>Teachers Details</span> </Link></Nav.Link>
                   <NavDropdown
                     title="user"
                     id={`offcanvasNavbarDropdown-expand-${expand}`}
@@ -39,8 +39,8 @@ const Header=()=>{
                   
                   </NavDropdown>
                 </Nav>
-                <button type="button" class="btn m-5 btn-danger">
-          <Link to={"/more"}>Log Out</Link>
+                <button type="button" class="btn m-5  btn-primary:hover, btn-warning">
+          <Link to={"/more"}><span className='text-dark'>Log Out</span></Link>
         </button>
               </Offcanvas.Body>
             </Navbar.Offcanvas>

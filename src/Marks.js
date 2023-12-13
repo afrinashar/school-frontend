@@ -2,7 +2,7 @@ import {Form} from 'react-bootstrap';
 import {Link} from "react-router-dom" 
 const Marks=()=>{
     return(<>
-    <Link to={"/"}>back to home</Link>
+    <Link to={"/"} className=' btn btn-outline-warning  border-0 text-black'>back to home</Link>
     <Form className="d-flex">
     <Form.Control
       type="search"

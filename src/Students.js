@@ -3,53 +3,71 @@ import {Form} from 'react-bootstrap';
 import {Link} from "react-router-dom" ; 
 import Pagination from 'react-bootstrap/Pagination';
 import { getStudents } from './api';
+import { useQuery } from 'react-query';
 const Students=()=>{
-  const [students, setStudents] = useState([]);
+ // const [students, setStudents] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [photosPerPage] = useState(5);
   const [searchTerm, setSearchTerm] = useState('');
   const [sortOrder, setSortOrder] = useState('asc');
-  useEffect(() => {
-    const fetchPhotos = async () => {
-      const data = await getStudents();
-      setStudents(data);
+
+  const { data: students, isLoading, isError,isFetching } = useQuery(['students' ],   {staleTime:3000});
+  if (isLoading || isFetching) {
+    return <h1>loading...</h1>
+  }
+
+  if (isError) {
+    return <div>Error fetching photos</div>;
+  }
+
+  const handleSearch = (e) => {
+    setSearchTerm(e.target.value);
+  };
+  console.log(students ,"data");
+  // useEffect(() => {
+  //   const fetchPhotos = async () => {
+  //     const data = await getStudents();
+  //     setStudents(data);
   
-    };
-    fetchPhotos();
-  }, []);
+  //   };
+  //   fetchPhotos();
+  // }, []);
 
-  const indexOfLastPhoto = currentPage * photosPerPage;
-  const indexOfFirstPhoto = indexOfLastPhoto - photosPerPage;
-  const currentPhotos = students.slice(indexOfFirstPhoto, indexOfLastPhoto);
+  // const indexOfLastPhoto = currentPage * photosPerPage;
+  // const indexOfFirstPhoto = indexOfLastPhoto - photosPerPage;
+  // const currentPhotos = students.slice(indexOfFirstPhoto, indexOfLastPhoto);
 
-  const paginate = (pageNumber) => setCurrentPage(pageNumber);
+  // const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
   // Search logic
-  const filteredPhotos = currentPhotos.filter((photo) =>
-    photo.name.toLowerCase().includes(searchTerm.toLowerCase())
-    );
-    console.log(filteredPhotos,"filteredPhotos");
-//Total
-//const Total = {student.marks.tamil}+{student.marks.english}+{student.marks.mathmaticals}+ {student.marks.science}+{student.marks.socialscience}
+//   const filteredPhotos = currentPhotos.filter((photo) =>
+//     photo.name.toLowerCase().includes(searchTerm.toLowerCase())
+//     );
+//     console.log(filteredPhotos,"filteredPhotos");
+// //Total
+// //const Total = {student.marks.tamil}+{student.marks.english}+{student.marks.mathmaticals}+ {student.marks.science}+{student.marks.socialscience}
 
-    // Sorting logic
- const sortedPhotos = [...filteredPhotos].sort((a, b) => {
-    const order = sortOrder === 'asc' ? 1 : -1;
-    return order * a.name.localeCompare(b.name);
-  });
+//     // Sorting logic
+//  const sortedPhotos = [...filteredPhotos].sort((a, b) => {
+//     const order = sortOrder === 'asc' ? 1 : -1;
+//     return order * a.name.localeCompare(b.name);
+//   });
 
     return(<>
-     <Link to={"/"}>back to home</Link>
-    <Form className="d-flex">
-    <Form.Control
-      type="search"
-      placeholder="Search"
-      className="mx-5 my-4"
-      aria-label="Search"
-    />
+     <Link to={"/"} className=' btn btn-outline-warning  border-0 text-black' >back to home</Link>    <h1 className='xs-8 lg-10'>Students Details</h1>
+     <form className="d-flex input-group w-auto">
+    <input
    
-  </Form>   <button className="btn btn-outline-info">Add Student</button>
-    <h1>Students Details</h1>
+     className="form-control   rounded"
+        type="text"
+        placeholder="Search photos..."
+        value={searchTerm}
+        onChange={handleSearch}
+      />
+      
+    </form>
+   <button className="btn btn-outline-warning"><span className='text-black'>Add Student</span></button>
+
     <table className="table">
       <thead>
         <tr>

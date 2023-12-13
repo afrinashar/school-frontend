@@ -1,46 +1,42 @@
-// Pagination.js
-import React from 'react';
-
-const Pagination = ({ currentPage, totalPages, handlePreviousPage, handleNextPage, handlePageSizeChange, pageSize }) => {
-  const getPageOptions = () => {
-    const pageOptions = [];
-    for (let i = 1; i <= totalPages; i++) {
-      pageOptions.push(
-        <option key={i} value={i}>
-          {i}
-        </option>
-      );
-    }
-    return pageOptions;
-  };
-
-  return (
-    <div className="mt-3">
-      <button className="btn btn-outline-primary mr-2" onClick={handlePreviousPage} disabled={currentPage === 1}>
-        Previous Page
-      </button>
-      <button className="btn btn-outline-primary" onClick={handleNextPage} disabled={currentPage === totalPages}>
-        Next Page
-      </button>
-
-      <span className="ml-3">
-        Page
-        <select value={currentPage} onChange={(e) => handlePageSizeChange(e)}>
-          {getPageOptions()}
-        </select>
-        of {totalPages}
-      </span>
-
-      <div className="form-group ml-3" style={{ width: '150px' }}>
-        <label htmlFor="pageSize">Items per Page: </label>
-        <select id="pageSize" className="form-control" value={pageSize} onChange={handlePageSizeChange}>
-          <option value="10">10</option>
-          <option value="20">20</option>
-          <option value="50">50</option>
-        </select>
-      </div>
-    </div>
+ import React from 'react'
+import StudentDetails from './teachersLogin/studentDetails';
+import paginationFactory from 'react-bootstrap-table2-paginator';
+ export const Pagination = () => {
+  const customTotal = (from, to, size) => (
+    <span className="react-bootstrap-table-pagination-total">
+      Showing { from } to { to } of { size } Results
+    </span>
   );
-};
-
-export default Pagination;
+  
+  const options = {
+    paginationSize: 4,
+    pageStartIndex: 0,
+    // alwaysShowAllBtns: true, // Always show next and previous button
+    // withFirstAndLast: false, // Hide the going to First and Last page button
+    // hideSizePerPage: true, // Hide the sizePerPage dropdown always
+    // hidePageListOnlyOnePage: true, // Hide the pagination list when only one page
+    firstPageText: 'First',
+    prePageText: 'Back',
+    nextPageText: 'Next',
+    lastPageText: 'Last',
+    nextPageTitle: 'First page',
+    prePageTitle: 'Pre page',
+    firstPageTitle: 'Next page',
+    lastPageTitle: 'Last page',
+    showTotal: true,
+    paginationTotalRenderer: customTotal,
+    disablePageTitle: true,
+    sizePerPageList: [{
+      text: '5', value: 5
+    }, {
+      text: '10', value: 10
+    }, {
+      text: 'All', value: student.length
+    }] // A numeric array is also available. the purpose of above example is custom the text
+  };
+   return (
+     <>
+     <StudentDetails  options={options} />
+  </> )
+ }
+ 

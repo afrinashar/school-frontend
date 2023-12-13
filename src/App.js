@@ -8,10 +8,11 @@ import { Routes,Route,Outlet } from 'react-router-dom';
 import Students from './Students';
 import Teachers from './Teachers';
 import Marks from './Marks';
-import Contact from './Contact';
+//import Contact from './managment/admin/contacts';
+import StudentDetails from './teachersLogin/studentDetails';
 //import Attend from './'
-import Attendencet from './AttendenceT'
-import Attendence from './Attendence'
+import Attendencet from './managment/student/AttendenceT'
+import Attendence from './teachersLogin/Attendence'
 import More from './More'
 import Shedules from './Shedules'
 function App() {
@@ -32,8 +33,9 @@ function App() {
     <Route exact path="/teacherAttendence"  element={<Attendencet/>} />   
     <Route exact path="/marks"  element={<Marks/>} />   
     <Route exact path="/shedules"  element={<Shedules/>} />   
-    <Route exact path="/contacts"  element={<Contact/>} />   
-    <Route exact path="/more"  element={<More/>} />                                                                                                                                                                                                                                                                                                 
+    
+    <Route exact path="/more"  element={<More/>} />      
+    <Route exact path="/as"  element={<StudentDetails/>} />                                                                                                                                                                                                                                                                                            
     </Routes>
   <Outlet/>
     </>
