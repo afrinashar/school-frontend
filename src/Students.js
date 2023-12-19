@@ -1,102 +1,122 @@
-import React, { useState, useEffect } from 'react';
-import {Form} from 'react-bootstrap';
-import {Link} from "react-router-dom" ; 
-import Pagination from 'react-bootstrap/Pagination';
-import { getStudents } from './api';
+import BootstrapTable from 'react-bootstrap-table-next';
+import { getStudents } from '../src/api';
 import { useQuery } from 'react-query';
-const Students=()=>{
- // const [students, setStudents] = useState([]);
-  const [currentPage, setCurrentPage] = useState(1);
-  const [photosPerPage] = useState(5);
-  const [searchTerm, setSearchTerm] = useState('');
-  const [sortOrder, setSortOrder] = useState('asc');
+import { Link } from 'react-router-dom';
+import paginationFactory from 'react-bootstrap-table2-paginator';
+import ToolkitProvider, {Search} from 'react-bootstrap-table2-toolkit/dist/react-bootstrap-table2-toolkit';
+import {
+  BsListUl,
+  BsThreeDotsVertical,
+  BsGrid3X3,
+} from "react-icons/bs";
+  const StudentDetails = () => {
+    const { SearchBar } = Search;
 
-  const { data: students, isLoading, isError,isFetching } = useQuery(['students' ],   {staleTime:3000});
-  if (isLoading || isFetching) {
-    return <h1>loading...</h1>
+    const { data: student, isLoading  } = useQuery('Student', getStudents);
+    if (isLoading) {
+        return <div>Loading...</div>;
+      }
+console.log(student,"stu");
+    const columns = [{
+  dataField: 'name',
+  text: 'Name',
+  sort: true, headerStyle: {
+    backgroundColor: '#FFBD33',
+    color:"#000000" 
   }
-
-  if (isError) {
-    return <div>Error fetching photos</div>;
+}, {
+  dataField: 'student_id',
+  text: 'Roll No',
+  sort: true, headerStyle: {
+    backgroundColor: '#FFBD33',
+    color:"#000000" 
   }
+}, {
+  dataField: 'age',
+  text: 'Age',
+  sort: true, headerStyle: {
+    backgroundColor: '#FFBD33',
+    color:"#000000" 
+  }
+},{
+  dataField: 'description',
+  text: 'Description',
+  sort: true, headerStyle: {
+    backgroundColor: '#FFBD33',
+    color:"#000000" ,
+    
+  }
+} ,{
+  dataField: 'isVerified',
+  text: 'isVerified',
+  sort: true, headerStyle: {
+    backgroundColor: '#FFBD33',
+    color:"#000000" 
+  }
+},];
+const customTotal = (from, to, size) => (
+  <span className="react-bootstrap-table-pagination-total  ">
+    Showing <span className='text-warning'>{ from }</span> to <span className='text-warning'>{ to }</span> of <span className='text-warning text-bold'>{ size }</span> Results
+  </span>
+);
 
-  const handleSearch = (e) => {
-    setSearchTerm(e.target.value);
-  };
-  console.log(students ,"data");
-  // useEffect(() => {
-  //   const fetchPhotos = async () => {
-  //     const data = await getStudents();
-  //     setStudents(data);
-  
-  //   };
-  //   fetchPhotos();
-  // }, []);
+const options = {
+  paginationSize: 4,
+  pageStartIndex: 0,
+  // alwaysShowAllBtns: true, // Always show next and previous button
+  // withFirstAndLast: false, // Hide the going to First and Last page button
+  // hideSizePerPage: true, // Hide the sizePerPage dropdown always
+  // hidePageListOnlyOnePage: true, // Hide the pagination list when only one page
+  firstPageText: 'First',
+  prePageText: 'Back',
+  nextPageText: 'Next',
+  lastPageText: 'Last',
+  nextPageTitle: 'First page',
+  prePageTitle: 'Pre page',
+  firstPageTitle: 'Next page',
+  lastPageTitle: 'Last page',
+  showTotal: true,
+  paginationTotalRenderer: customTotal,
+  disablePageTitle: true,
+  backgroundColor:"000000",
+  sizePerPageList: [{
+    text: '5', value: 5
+  }, {
+    text: '10', value: 10
+  }, {
+    text: 'All', value: student.length
+  }] // A numeric array is also available. the purpose of above example is custom the text
+};
+console.log(student,options,"sti");
+const rowStyle = { backgroundColor: '#eef2fc',color: '#000000'};
 
-  // const indexOfLastPhoto = currentPage * photosPerPage;
-  // const indexOfFirstPhoto = indexOfLastPhoto - photosPerPage;
-  // const currentPhotos = students.slice(indexOfFirstPhoto, indexOfLastPhoto);
-
-  // const paginate = (pageNumber) => setCurrentPage(pageNumber);
-
-  // Search logic
-//   const filteredPhotos = currentPhotos.filter((photo) =>
-//     photo.name.toLowerCase().includes(searchTerm.toLowerCase())
-//     );
-//     console.log(filteredPhotos,"filteredPhotos");
-// //Total
-// //const Total = {student.marks.tamil}+{student.marks.english}+{student.marks.mathmaticals}+ {student.marks.science}+{student.marks.socialscience}
-
-//     // Sorting logic
-//  const sortedPhotos = [...filteredPhotos].sort((a, b) => {
-//     const order = sortOrder === 'asc' ? 1 : -1;
-//     return order * a.name.localeCompare(b.name);
-//   });
-
-    return(<>
-     <Link to={"/"} className=' btn btn-outline-warning  border-0 text-black' >back to home</Link>    <h1 className='xs-8 lg-10'>Students Details</h1>
-     <form className="d-flex input-group w-auto">
-    <input
-   
-     className="form-control   rounded"
-        type="text"
-        placeholder="Search photos..."
-        value={searchTerm}
-        onChange={handleSearch}
-      />
-      
-    </form>
-   <button className="btn btn-outline-warning"><span className='text-black'>Add Student</span></button>
-
-    <table className="table">
-      <thead>
-        <tr>
-          <th>Student ID</th>
-          <th>Name</th>
-          <th>Age</th>
-          <th>Grade Level</th>
-          <th>Address</th>
-          <th>Marks</th>
-        </tr>
-      </thead>
-      <tbody>
-        {students.map((student) => (
-          <tr key={student.student_id}>
-            <td>{student.student_id}</td>
-            <td>{student.name} </td>
-            <td>{student.age}</td>
-            <td>{student.grade_level}</td>
-            <td>
-              {`${student.address.street}, ${student.address.city}, ${student.address.state}, ${student.address.zip_code}`}
-            </td>
-            <td>
-              {`Tamil: ${student.marks.tamil}, English: ${student.marks.english}, Mathematics: ${student.marks.mathmaticals}, Science: ${student.marks.science}, Social Science: ${student.marks.socialscience}`}
-            </td>
-          <td><button  ></button></td>
-          </tr>
-        ))}
-      </tbody>
-    </table>
+ 
+  return (<>
+  <Link to={"/"} className=' btn btn-outline-warning m-3 border-0 text-black'>back to home</Link>
+ <Link to="create" className='btn btn-outline-warning   float-end m-3'>Add </Link>    
+    <ToolkitProvider
+  keyField="Student"
+  data={ student }
+  columns={ columns }
+ 
+  search
+ 
+>
+  {
+    props => (
+      <div>
+       
+        <SearchBar className="border border-warning d-flex mr-5 border-opacity-50 fluid" { ...props.searchProps } />
+        <hr />
+        <BootstrapTable  className="m-3"
+        rowStyle={ rowStyle }
+          { ...props.baseProps }
+        pagination={ paginationFactory(options) }  />
+      </div>
+    )
+  }
+</ToolkitProvider>
+ 
   </>)
 }
-export default Students
+export default StudentDetails
