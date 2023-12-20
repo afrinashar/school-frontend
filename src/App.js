@@ -18,7 +18,7 @@ import Shedules from './Shedules'
 function App() {
   return (
     <>
-    <div className="schoolname .bg-warning.bg-gradient">
+    <div className="school d-flex justify-content-center align-items-center p-3 bg-warning ">
     <h1 className='.bg-warning.bg-gradient' >St PETER'S MIDDLE SCHOOL</h1>
     <h5 className="m-3">Moolaikadu - 627113</h5></div>
     

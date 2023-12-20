@@ -7,6 +7,10 @@ import NavDropdown from 'react-bootstrap/NavDropdown';
 import Offcanvas from 'react-bootstrap/Offcanvas';
 import {Link} from "react-router-dom"
 const Header=()=>{
+  const logOut = () => {
+    window.localStorage.clear();
+    window.location.href = "/students";
+  };
     return(<>
     <div className="header" >{['sm'].map((expand) => (
         <Navbar key={expand} expand={expand} className="bg-body-tertiary-primary  mb-3">
@@ -40,7 +44,7 @@ const Header=()=>{
                   </NavDropdown>
                 </Nav>
                 <button type="button" class="btn m-5  btn-primary:hover, btn-warning">
-          <Link to={"/more"}><span className='text-dark'>Log Out</span></Link>
+          <Link to={"/more"}> OnClick={logOut} <span className='text-dark'>Log Out</span></Link>
         </button>
               </Offcanvas.Body>
             </Navbar.Offcanvas>
