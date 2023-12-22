@@ -1,5 +1,5 @@
 import BootstrapTable from 'react-bootstrap-table-next';
-import { getMarks } from '../src/api';
+import {   getSubjects } from '../src/api';
 import { useQuery } from 'react-query';
 import { Link } from 'react-router-dom';
 import paginationFactory from 'react-bootstrap-table2-paginator';
@@ -9,14 +9,14 @@ import ToolkitProvider, {Search} from 'react-bootstrap-table2-toolkit/dist/react
 //   BsThreeDotsVertical,
 //   BsGrid3X3,
 // } from "react-icons/bs";
-  const MarkDetails = () => {
+  const SubjectDetails = () => {
     const { SearchBar } = Search;
 
-    const { data: Mark, isLoading  } = useQuery('Mark', getMarks);
+    const { data: Subject, isLoading  } = useQuery('Subject', getSubjects());
     if (isLoading) {
         return <div>Loading...</div>;
       }
-console.log(Mark,"stu");
+console.log(Subject,"stu");
     const columns = [{
   dataField: 'name',
   text: 'Name',
@@ -25,7 +25,7 @@ console.log(Mark,"stu");
     color:"#000000" 
   }
 }, {
-  dataField: 'Mark_id',
+  dataField: 'Subject_id',
   text: 'Roll No',
   sort: true, headerStyle: {
     backgroundColor: '#FFBD33',
@@ -84,10 +84,10 @@ const options = {
   }, {
     text: '10', value: 10
   }, {
-    text: 'All', value: Mark.length
+    text: 'All', value: Subject.length
   }] // A numeric array is also available. the purpose of above example is custom the text
 };
-console.log(Mark,options,"sti");
+console.log(Subject,options,"sti");
 const rowStyle = { backgroundColor: '#eef2fc',color: '#000000'};
 
  
@@ -95,8 +95,8 @@ const rowStyle = { backgroundColor: '#eef2fc',color: '#000000'};
   <Link to={"/"} className=' btn btn-outline-warning m-3 border-0 text-black'>back to home</Link>
  <Link to="create" className='btn btn-outline-warning   float-end m-3'>Add </Link>    
     <ToolkitProvider
-  keyField="Mark"
-  data={ Mark }
+  keyField="Subject"
+  data={ Subject }
   columns={ columns }
  
   search
@@ -119,4 +119,4 @@ const rowStyle = { backgroundColor: '#eef2fc',color: '#000000'};
  
   </>)
 }
-export default MarkDetails
+export default SubjectDetails

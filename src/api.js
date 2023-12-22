@@ -57,3 +57,47 @@ export const deleteTeacher = async (studentId) => {
   const response = await api.delete(`/teachers/${studentId}`);
   return response.data;
 };
+//marks
+export const getMarks = async () => {
+  const response = await api.get('/students/marks');
+  return response.data;
+};
+export const getMarksById = async (studentId) => {
+    const response = await api.get(`/students/marks/${studentId}`);
+    return response.data;
+  };
+export const createMarks = async (studentData) => {
+  const response = await api.post('/students/marks', studentData);
+  return response.data;
+};
+
+export const updateMarks = async (studentId, studentData) => {
+  const response = await api.put(`/students/marks/${studentId}`, studentData);
+  return response.data;
+};
+
+//subjects
+
+export const getSubjects = async () => {
+  const response = await api.get('/students/subjects');
+  return response.data;
+};
+export const getSubjectsById = async (studentId) => {
+    const response = await api.get(`/students/marks/${studentId}`);
+    return response.data;
+  };
+export const createSubjects = async (studentData) => {
+  const response = await api.post('/students/marks', studentData);
+  return response.data;
+};
+
+export const updateSubjects = async (studentId, studentData) => {
+  const response = await api.put(`/students/marks/${studentId}`, studentData);
+  return response.data;
+};
+
+export const deleteMarks = async (studentId) => {
+  const response = await api.delete(`/students/marks/${studentId}`);
+  return response.data;
+};
+
