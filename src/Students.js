@@ -93,7 +93,7 @@ const rowStyle = { backgroundColor: '#eef2fc',color: '#000000'};
  
   return (<>
   <Link to={"/"} className=' btn btn-outline-warning m-3 border-0 text-black'>back to home</Link>
- <Link to="create" className='btn btn-outline-warning   float-end m-3'>Add </Link>    
+ <Link to="/createStudent" className='btn btn-outline-warning   float-end m-3'>Add </Link>    
     <ToolkitProvider
   keyField="Student"
   data={ student }

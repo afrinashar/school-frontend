@@ -15,6 +15,7 @@ import Attendencet from './managment/student/AttendenceT'
 import Attendence from './teachersLogin/Attendence'
 import More from './More'
 import Shedules from './Shedules'
+import AddStudents from './managment/student/addStudents';
 function App() {
   return (
     <>
@@ -33,7 +34,7 @@ function App() {
     <Route exact path="/teacherAttendence"  element={<Attendencet/>} />   
     <Route exact path="/marks"  element={<Marks/>} />   
     <Route exact path="/shedules"  element={<Shedules/>} />   
-    
+    <Route exact path="/createStudent"  element={<AddStudents/>} />  
     <Route exact path="/more"  element={<More/>} />      
     <Route exact path="/as"  element={<StudentDetails/>} />                                                                                                                                                                                                                                                                                            
     </Routes>
