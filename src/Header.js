@@ -14,11 +14,11 @@ const Header=()=>{
   };
     return(<>
       
-        <nav class="navbar d-flex fixed-top navbar-light bg-light">
+        <nav class="navbar d-flex    ">
 
           <DropDown/>
-   <button type="button" class="btn m-5  btn-primary:hover, btn-warning">
-          <Link to={"/more"}OnClick={logOut}>  <span className='text-dark'>Log Out</span></Link>
+   <button type="button"to={"/more"}OnClick={logOut} class="btn m-5 border border-light  rounded-2 btn-danger">
+       Log Out     
         </button>
 
 </nav>

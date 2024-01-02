@@ -19,7 +19,7 @@ const DropDown = () => {
   <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
     Users
   </button>
-  <div class="dropdown-menu dropdown-menu-right">
+  <div class=" btn dropdown-menu dropdown-menu-right">
     <button class="dropdown-item" type="button"><Link className='head  btn btn-outline-warning' to={"/students"}><span className='text-black'>Students Details</span></Link></button>
     <button class="dropdown-item" type="button"><Link className='head btn btn-outline-warning' to={"/teachers"}><span className='text-black'>Teachers Details</span> </Link></button>
     <button class="dropdown-item" type="button">Admin</button>

@@ -2,7 +2,7 @@ import "./Home.css";
 import { Link } from "react-router-dom";
 import Header from "./Header";
 import Carousel from "react-bootstrap/Carousel";
-
+import Footer from "./Footer";
 import ReactPlayer from 'react-player/lazy'
 import { Cards } from "./component/Cards";
 import { History } from "./component/History";
@@ -103,6 +103,7 @@ const Home = () => {
         <h2>108537 Teachers</h2>
       </div>
      <Cards/>
+     <Footer></Footer>
     </>
   );
 };

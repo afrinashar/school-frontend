@@ -105,8 +105,7 @@ const rowStyle = { backgroundColor: '#eef2fc',color: '#000000'};
   {
     props => (
       <div>
-       
-        <SearchBar className="border border-warning d-flex mr-5 border-opacity-50 fluid" { ...props.searchProps } />
+         <SearchBar className="border border-warning d-flex mr-5 border-opacity-50 fluid" { ...props.searchProps } />
         <hr />
         <BootstrapTable  className="m-3"
         rowStyle={ rowStyle }

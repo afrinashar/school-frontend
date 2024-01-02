@@ -57,18 +57,6 @@ export const deleteTeacher = async (studentId) => {
   const response = await api.delete(`/teachers/${studentId}`);
   return response.data;
 };
-<<<<<<< HEAD
-export const getMarks = async () => {
-  const response = await api.get('/teachers');
-  return response.data;
-};
-export const getMarksById = async (studentId) => {
-    const response = await api.get(`/teachers/${studentId}`);
-    return response.data;
-  };
-export const createMarks = async (studentData) => {
-  const response = await api.post('/teachers', studentData);
-=======
 //marks
 export const getMarks = async () => {
   const response = await api.get('/students/marks');
@@ -80,14 +68,10 @@ export const getMarksById = async (studentId) => {
   };
 export const createMarks = async (studentData) => {
   const response = await api.post('/students/marks', studentData);
->>>>>>> abc0bba975b109652aa25d81536a2a1332f9c0aa
   return response.data;
 };
 
 export const updateMarks = async (studentId, studentData) => {
-<<<<<<< HEAD
-  const response = await api.put(`/teachers/${studentId}`, studentData);
-=======
   const response = await api.put(`/students/marks/${studentId}`, studentData);
   return response.data;
 };
@@ -109,18 +93,11 @@ export const createSubjects = async (studentData) => {
 
 export const updateSubjects = async (studentId, studentData) => {
   const response = await api.put(`/students/marks/${studentId}`, studentData);
->>>>>>> abc0bba975b109652aa25d81536a2a1332f9c0aa
   return response.data;
 };
 
 export const deleteMarks = async (studentId) => {
-<<<<<<< HEAD
-  const response = await api.delete(`/teachers/${studentId}`);
-  return response.data;
-};
-=======
   const response = await api.delete(`/students/marks/${studentId}`);
   return response.data;
 };
 
->>>>>>> abc0bba975b109652aa25d81536a2a1332f9c0aa
