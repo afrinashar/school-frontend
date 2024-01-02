@@ -15,7 +15,11 @@ import Attendencet from './managment/student/AttendenceT'
 import Attendence from './teachersLogin/Attendence'
 import More from './More'
 import Shedules from './Shedules'
+<<<<<<< HEAD
 import AddStudents from './managment/student/addStudents';
+=======
+import SubjectDetails from './subject';
+>>>>>>> abc0bba975b109652aa25d81536a2a1332f9c0aa
 function App() {
   return (
     <>
@@ -34,8 +38,14 @@ function App() {
     <Route exact path="/teacherAttendence"  element={<Attendencet/>} />   
     <Route exact path="/marks"  element={<Marks/>} />   
     <Route exact path="/shedules"  element={<Shedules/>} />   
+<<<<<<< HEAD
     <Route exact path="/createStudent"  element={<AddStudents/>} />  
     <Route exact path="/more"  element={<More/>} />      
+=======
+    <Route exact path="/marks"  element={<Marks/>} />   
+    <Route exact path="/more"  element={<More/>} />   
+    <Route exact path="/subjects"  element={<SubjectDetails/>} />      
+>>>>>>> abc0bba975b109652aa25d81536a2a1332f9c0aa
     <Route exact path="/as"  element={<StudentDetails/>} />                                                                                                                                                                                                                                                                                            
     </Routes>
   <Outlet/>

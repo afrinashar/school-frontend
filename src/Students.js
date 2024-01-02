@@ -4,11 +4,11 @@ import { useQuery } from 'react-query';
 import { Link } from 'react-router-dom';
 import paginationFactory from 'react-bootstrap-table2-paginator';
 import ToolkitProvider, {Search} from 'react-bootstrap-table2-toolkit/dist/react-bootstrap-table2-toolkit';
-import {
-  BsListUl,
-  BsThreeDotsVertical,
-  BsGrid3X3,
-} from "react-icons/bs";
+// import {
+//   BsListUl,
+//   BsThreeDotsVertical,
+//   BsGrid3X3,
+// } from "react-icons/bs";
   const StudentDetails = () => {
     const { SearchBar } = Search;
 
