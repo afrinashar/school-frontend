@@ -48,7 +48,7 @@ const { data: existingStudent, isLoading: photoLoading } = useQuery(
         city:  existingStudent.city,
         state:  existingStudent.state,
         zip_code:  existingStudent.zip_code,
-    }});
+    } });
     }
   }, [existingStudent]);
 
