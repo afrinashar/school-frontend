@@ -3,19 +3,19 @@ import { Link } from "react-router-dom";
 import Header from "./Header";
 import Carousel from "react-bootstrap/Carousel";
 import Footer from "./Footer";
-import ReactPlayer from 'react-player/lazy'
-import { Cards } from "./component/Cards";
+ import { Cards } from "./component/Cards";
 import { History } from "./component/History";
 import { Acheivment } from "./component/Acheivment";
+import { Container } from "react-bootstrap";
+import { Video } from "./assets/Video";
 const Home = () => {
   return (
     <>
-      <Header />
-      <ReactPlayer
-     width='100%'
-     height='100%'
-
-      url='https://youtu.be/7xCe2m0kiSg?si=_xTGOU9rXIoU6Mdo' />
+    <Header /> 
+     
+     
+    <Video className="fluid"/>
+      <Container className="d-flex flex-column justify-content-end  w-100">
       <Carousel
         style={{
           height: "25rem",
@@ -103,8 +103,8 @@ const Home = () => {
         <h2>108537 Teachers</h2>
       </div>
      <Cards/>
-     <Footer></Footer>
-    </>
+    
+    </Container> <Footer></Footer></>
   );
 };
 export default Home;
