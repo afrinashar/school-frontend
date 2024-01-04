@@ -30,7 +30,8 @@ function App() {
     
     <Routes>
     <Route exact path="/"  element={<Home/>} />  
-    <Route exact path="/students"  element={<Students/>} />   
+    <Route exact path="/students"  element={<Students/>} />  
+    <Route exact path="/students:id"  element={<editStudents/>} />  
     <Route exact path="/teachers"  element={<Teachers/>} />    
     <Route exact path="/attendence"  element={<Attendence/>} />   
     <Route exact path="/teacherAttendence"  element={<Attendencet/>} />   

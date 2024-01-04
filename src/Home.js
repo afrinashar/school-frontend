@@ -8,6 +8,7 @@ import { History } from "./component/History";
 import { Acheivment } from "./component/Acheivment";
 import { Container } from "react-bootstrap";
 import { Video } from "./assets/Video";
+import CountUp from 'react-countup';
 const Home = () => {
   return (
     <>
@@ -91,17 +92,17 @@ const Home = () => {
 
       <h1 style={{ color: "#001f54" }}>Directorate of Education</h1>
       <div
-        className="Directorate"
-        style={{ backgroundColor: "#001f54", color: "white" }}
+        className="Directorate "
+        style={{ backgroundColor: "#001f54", color: "white",margin:"10px" }}
       >
-        <ul className="d-flex "><li>students</li> 
-        <li>alumni</li>
-         <li>cources</li></ul>
-
-        <h2>dd</h2>
-        <h2>2550997 Students</h2>
-        <h2>108537 Teachers</h2>
-      </div>
+        <ul className="d-flex list-unstyled m-3 d-flex justify-content-around"> 
+        <li><h3>Students</h3></li>
+         <li><h3> alumni</h3></li>
+         <li><h3>  courses</h3></li> </ul>
+      <ul className="d-flex list-unstyled m-3 p-5 d-flex justify-content-around"> <li><h2> <CountUp end={198} duration={5} /> </h2></li>
+      <li><h2> <CountUp end={10045} duration={5} /></h2></li>
+      <li><h2> <CountUp end={14} duration={5} /></h2></li>
+    </ul>   </div>
      <Cards/>
     
     </Container> <Footer></Footer></>
