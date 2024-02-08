@@ -47,7 +47,7 @@ console.log(student,"stu");
     
   }
 } ,{
-  dataField: 'isVerified',
+  dataField:  "<Link to={`/students/edit/${student._id}`}>Update</Link>",
   text: 'isVerified',
   sort: true, headerStyle: {
     backgroundColor: '#FFBD33',
@@ -59,7 +59,8 @@ const customTotal = (from, to, size) => (
     Showing <span className='text-warning'>{ from }</span> to <span className='text-warning'>{ to }</span> of <span className='text-warning text-bold'>{ size }</span> Results
   </span>
 );
-
+console.log(student.data
+   ,"ids",student);
 const options = {
   paginationSize: 4,
   pageStartIndex: 0,

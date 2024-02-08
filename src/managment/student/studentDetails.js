@@ -10,7 +10,7 @@ import { Spinners } from '../../assets/Spinners';
   const StudentDetails = () => {
     const { SearchBar } = Search;
 
-    const { data: student, isLoading  } = useQuery('Student', getStudents);
+    const { data: student, isLoading  } = useQuery('student', getStudents);
     if (isLoading) {
         return  <Spinners/>
       }

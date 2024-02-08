@@ -84,7 +84,7 @@ const options = {
   }, {
     text: '10', value: 10
   }, {
-    text: 'All', value: Mark.length
+    text: 'All', value: Mark
   }] // A numeric array is also available. the purpose of above example is custom the text
 };
 console.log(Mark,options,"sti");

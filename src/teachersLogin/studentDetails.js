@@ -8,10 +8,11 @@ import ToolkitProvider, {Search} from 'react-bootstrap-table2-toolkit/dist/react
   const StudentDetails = () => {
     const { SearchBar } = Search;
 
-    const { data: student, isLoading  } = useQuery('Student', getStudents);
+    const { data: student, isLoading  } = useQuery('student', getStudents);
     if (isLoading) {
         return <div>Loading...</div>;
       }
+      
 console.log(student,"stu");
     const columns = [{
   dataField: 'student',
@@ -22,7 +23,7 @@ console.log(student,"stu");
   sort: true
 }, {
   dataField: 'price',
-  text: 'Product Price'
+  text:   ""
 }];
 const customTotal = (from, to, size) => (
   <span className="react-bootstrap-table-pagination-total">

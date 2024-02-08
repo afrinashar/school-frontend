@@ -23,12 +23,7 @@ const navigate =useNavigate()
     name: '',
     age:  '',
   gender: '',
-  address: {
-    street: '',
-    city:  '',
-    state:  '',
-    zip_code:  ''
-  }
+  address:  ''
   });
 
   const handleCreate = async (e) => {
@@ -116,8 +111,8 @@ const { name, value} = e.target;
       <input
         className="form-control"
         id="street"
-        name="address.street"
-        value={studentData.address.street}
+        name="address"
+        value={studentData.address}
         onChange={handleChange}
       />
     </div>
