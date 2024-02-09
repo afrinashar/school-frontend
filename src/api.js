@@ -79,7 +79,7 @@ export const updateMarks = async (studentId, studentData) => {
 //subjects
 
 export const getSubjects = async () => {
-  const response = await api.get('/students/subjects');
+  const response = await api.get('/subject');
   return response.data;
 };
 export const getSubjectsById = async (studentId) => {
