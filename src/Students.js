@@ -47,7 +47,7 @@ console.log(student,"stu");
     
   }
 } ,{
-  dataField:  "<Link to={`/students/edit/${student._id}`}>Update</Link>",
+  dataField: `ss ${<Link to={`/students/edit/${student._id}`}>Update</Link>}`,
   text: 'isVerified',
   sort: true, headerStyle: {
     backgroundColor: '#FFBD33',
@@ -55,13 +55,14 @@ console.log(student,"stu");
   }
 },];
 const customTotal = (from, to, size) => (
-  <span className="react-bootstrap-table-pagination-total  ">
+  <span className="react-bootstrap-table-pagination-total   ">
     Showing <span className='text-warning'>{ from }</span> to <span className='text-warning'>{ to }</span> of <span className='text-warning text-bold'>{ size }</span> Results
   </span>
 );
 console.log(student.data
    ,"ids",student);
 const options = {
+  className:"bgs",
   paginationSize: 4,
   pageStartIndex: 0,
   // alwaysShowAllBtns: true, // Always show next and previous button
@@ -94,7 +95,7 @@ const rowStyle = { backgroundColor: '#eef2fc',color: '#000000'};
  
   return (<>
   <Link to={"/"} className=' btn btn-outline-warning m-3 border-0 text-black'>back to home</Link>
- <Link to="/createStudent" className='btn btn-outline-warning   float-end m-3'>Add </Link>    
+ <Link to="/createStudent" className=' bgs btn btn-outline-warning   float-end m-3'>Add Student </Link>    
     <ToolkitProvider
   keyField="Student"
   data={ student }

@@ -12,11 +12,11 @@ import ToolkitProvider, {Search} from 'react-bootstrap-table2-toolkit/dist/react
   const SubjectDetails = () => {
     const { SearchBar } = Search;
 
-    const { data: Subject, isLoading  } = useQuery('Subject', getSubjects());
+    const { data: subject, isLoading  } = useQuery('Subject', getSubjects());
     if (isLoading) {
         return <div>Loading...</div>;
       }
-console.log(Subject,"stu");
+console.log(subject,"stu");
     const columns = [{
   dataField: 'name',
   text: 'Name',
@@ -96,7 +96,7 @@ const rowStyle = { backgroundColor: '#eef2fc',color: '#000000'};
  <Link to="create" className='btn btn-outline-warning   float-end m-3'>Add </Link>    
     <ToolkitProvider
   keyField="Subject"
-  data={ Subject }
+  data={ subject }
   columns={ columns }
  
   search

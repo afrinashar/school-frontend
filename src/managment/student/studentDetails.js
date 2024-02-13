@@ -1,5 +1,5 @@
 import BootstrapTable from 'react-bootstrap-table-next';
-import { getStudents } from '../api';
+import { getStudents } from '../../api';
 import { useQuery } from 'react-query';
 import { Link } from 'react-router-dom';
  
@@ -10,11 +10,11 @@ import { Spinners } from '../../assets/Spinners';
   const StudentDetails = () => {
     const { SearchBar } = Search;
 
-    const { data: student, isLoading  } = useQuery('student', getStudents);
+    const { data: students, isLoading  } = useQuery('Student', getStudents);
     if (isLoading) {
         return  <Spinners/>
       }
-console.log(student,"stu");
+console.log(students,"stu");
     const columns = [{
   dataField: 'student',
   text: 'Product ID',
@@ -29,13 +29,13 @@ console.log(student,"stu");
   text: 'Product Price'
 }];
 
-console.log(student,"sti");
+console.log(students,"sti");
   return (<>
   <Link className=' btn btn-outline-warning m-3'><span className='text-black'>Add Students</span></Link>
     
     <ToolkitProvider
   keyField="Student"
-  data={ student }
+  data={ students }
   columns={ columns }
   search
 >

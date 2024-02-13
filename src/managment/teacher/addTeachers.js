@@ -23,12 +23,9 @@ const navigate =useNavigate()
     name: '',
     age:  '',
   gender: '',
-  address: {
-    street: '',
-    city:  '',
-    state:  '',
-    zip_code:  ''
-  }
+  address:  "",
+  role:"",phone:"",
+  email:""
   });
 
   const handleCreate = async (e) => {
@@ -44,17 +41,13 @@ const navigate =useNavigate()
       name: '',
       age:  '',
     gender: '',
-   
-    address: {
-      street: '',
-      city:  '',
-      state:  '',
-      zip_code:  ''
-    } 
+   phone:"",
+    address: "",role:"",
+    email:"",
        
     });
      
-    navigate('/');
+    navigate('/teachers');
   };
   const handleChange = (e) => {
     console.log   ((e.target.name),((e.target.value)))
@@ -112,49 +105,50 @@ const { name, value} = e.target;
       />
     </div>
     <div className="form-group">
-      <label htmlFor="street">street:</label>
+      <label htmlFor="phone">Phone:</label>
       <input
         className="form-control"
-        id="street"
-        name="address.street"
-        value={teacherData.address.street}
+        id="phone"
+        name="phone"
+        value={teacherData.phone}
         onChange={handleChange}
       />
     </div>
     <div className="form-group">
-      <label htmlFor="state">state:</label>
+      <label htmlFor="email">Email:</label>
       <input
         className="form-control"
-        id="state"
-        name="address.state"
-        value={teacherData.address.state}
+        id="email"
+        name="email"
+        value={teacherData.email}
         onChange={handleChange}
       />
     </div>
     <div className="form-group">
-      <label htmlFor="city">city:</label>
+      <label htmlFor="role">Role:</label>
       <input
         className="form-control"
-        id="city"
-        name="address.city"
-        value={teacherData.address.city}
+        id="role"
+        name="role"
+        value={teacherData.role}
         onChange={handleChange}
       />
     </div>
     <div className="form-group">
-      <label htmlFor="zip_code">zip_code:</label>
-      <input
+      <label htmlFor="address">Address:</label>
+      <textarea 
+      type='texrarea'
         className="form-control"
-        id="zip_code"
-        name="address.zip_code"
-        value={teacherData.address.zip_code}
+        id="address"
+        name="address"
+        value={teacherData.address}
         onChange={handleChange}
       />
     </div>
-    <Button type="submit" variant="primary">
+    <Button type="submit" variant="warning mx-3 my-5 ">
       Create Teacher 
     </Button>
- <Button onClick={handleClose}> close</Button>
+ <Button variant="warning mx-3 my-5 "  onClick={handleClose}> close</Button>
 </form></>
   )
 }

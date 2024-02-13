@@ -15,23 +15,47 @@ import { Spinners } from '../../assets/Spinners';
         return  <Spinners/>
       }
 console.log(teacher,"stu");
-    const columns = [{
+    const columns = [
+      {
+        dataField: '_id',
+        text: 'Employee code',
+        headerAlign: 'center'
+      },{
   dataField: 'name',
   text: 'Name',
   headerAlign: 'center'
-}, {
+},
+{
+  dataField: 'role',
+  text: 'Role',
+  headerAlign: 'center',
+  sort: true
+},
+{
+  dataField: 'email',
+  text: 'Email',
+  headerAlign: 'center',
+  sort: true
+},
+{
+  dataField: 'phone',
+  text: 'Mobile Number ',
+  headerAlign: 'center',
+  sort: true
+}, 
+{
   dataField: 'age',
   text: 'Age',
   headerAlign: 'center',
   sort: true
 }, {
-  dataField: 'address.city',
+  dataField: 'address',
   text: 'Address'
 }];
 
 console.log(teacher,"sti");
   return (<>
-  <Link className=' btn btn-outline-warning m-3'><span className='text-black'>Add Teachers</span></Link>
+  <Link to="/createTeacher" className=' btn btn-outline-warning m-3'><span className='text-black'>Add Teachers</span></Link>
     
     <ToolkitProvider
   keyField="Teacher"

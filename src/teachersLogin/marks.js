@@ -16,11 +16,11 @@ import { Spinners } from '../assets/Spinners';
       }
 console.log(marks,"stud");
     const columns = [{
-  dataField: 'marks',
-  text: 'Product ID',
+  dataField: 'tamil',
+  text: 'tamil',
   headerAlign: 'center'
 }, {
-  dataField: 'name',
+  dataField: 'rollNo',
   text: 'Product Name',
   headerAlign: 'center',
   sort: true

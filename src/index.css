@@ -16,3 +16,8 @@ button{
   background-color: orange;
   color: black;
 }
+.ags a{
+  background-color: orange !important;
+  color: black !important;
+  border: black;
+}

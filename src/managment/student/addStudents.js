@@ -23,7 +23,7 @@ const navigate =useNavigate()
     name: '',
     age:  '',
   gender: '',
-  address:  ''
+  address:  '',
   });
 
   const handleCreate = async (e) => {
@@ -40,13 +40,8 @@ const navigate =useNavigate()
       age:  '',
     gender: '',
    
-    address: {
-      street: '',
-      city:  '',
-      state:  '',
-      zip_code:  ''
-    } 
-       
+    address: "",
+
     });
      
     navigate('/');

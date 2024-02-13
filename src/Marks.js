@@ -25,29 +25,29 @@ console.log(Mark,"stu");
     color:"#000000" 
   }
 }, {
-  dataField: 'Mark_id',
+  dataField: 'rollNo',
   text: 'Roll No',
   sort: true, headerStyle: {
     backgroundColor: '#FFBD33',
     color:"#000000" 
   }
 }, {
-  dataField: 'age',
-  text: 'Age',
+  dataField: 'tamil',
+  text: 'Tamil',
   sort: true, headerStyle: {
     backgroundColor: '#FFBD33',
     color:"#000000" 
   }
 },{
-  dataField: 'description',
-  text: 'Description',
+  dataField: 'external.marks.english',
+  text: 'English',
   sort: true, headerStyle: {
     backgroundColor: '#FFBD33',
     color:"#000000" ,
     
   }
 } ,{
-  dataField: 'isVerified',
+  dataField: '_id',
   text: 'isVerified',
   sort: true, headerStyle: {
     backgroundColor: '#FFBD33',
