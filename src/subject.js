@@ -84,10 +84,10 @@ const options = {
   }, {
     text: '10', value: 10
   }, {
-    text: 'All', value: Subject.length
+    text: 'All', value: subject.length
   }] // A numeric array is also available. the purpose of above example is custom the text
 };
-console.log(Subject,options,"sti");
+console.log(subject,options,"sti");
 const rowStyle = { backgroundColor: '#eef2fc',color: '#000000'};
 
  

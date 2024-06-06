@@ -32,6 +32,7 @@ const navigate =useNavigate()
     e.preventDefault();
     console.log(   e.preventDefault());
     mutation.mutate(teacherData);
+    navigate('/teachers');
    // console.log(teacherData,(typeof(teacherData.imageUrl.name)),(typeof(teacherData.imageUrl)),"photooo");
   };
 

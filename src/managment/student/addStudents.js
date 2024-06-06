@@ -44,7 +44,7 @@ const navigate =useNavigate()
 
     });
      
-    navigate('/');
+    navigate('/students');
   };
   const handleChange = (e) => {
     console.log   ((e.target.name),((e.target.value)))

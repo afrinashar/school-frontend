@@ -1,7 +1,7 @@
 import BootstrapTable from 'react-bootstrap-table-next';
 import { getStudents } from '../src/api';
 import { useQuery } from 'react-query';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate} from 'react-router-dom';
 import paginationFactory from 'react-bootstrap-table2-paginator';
 import ToolkitProvider, {Search} from 'react-bootstrap-table2-toolkit/dist/react-bootstrap-table2-toolkit';
 // import {
@@ -10,13 +10,20 @@ import ToolkitProvider, {Search} from 'react-bootstrap-table2-toolkit/dist/react
 //   BsGrid3X3,
 // } from "react-icons/bs";
   const StudentDetails = () => {
+    const Navigate = useNavigate() 
     const { SearchBar } = Search;
-
     const { data: student, isLoading  } = useQuery('Student', getStudents);
     if (isLoading) {
         return <div>Loading...</div>;
       }
-console.log(student,"stu");
+      const update=(id)=>{
+        Navigate(`/students/edit/${id}`)
+console.log(id,"idd");
+<Link to={`/students/edit/${id}`}>Update</Link>
+      }
+const edit =`ss ${<Link to={`/students/edit/${student._id}`}>Update</Link>}`
+console.log(student,"stu",student._id);
+
     const columns = [{
   dataField: 'name',
   text: 'Name',
@@ -25,7 +32,7 @@ console.log(student,"stu");
     color:"#000000" 
   }
 }, {
-  dataField: 'student_id',
+  dataField: 'student._id',
   text: 'Roll No',
   sort: true, headerStyle: {
     backgroundColor: '#FFBD33',
@@ -47,8 +54,15 @@ console.log(student,"stu");
     
   }
 } ,{
-  dataField: `ss ${<Link to={`/students/edit/${student._id}`}>Update</Link>}`,
+  dataField: "_id",
   text: 'isVerified',
+  events: {
+    onClick: (e, column, columnIndex, row, rowIndex,_id) => {
+     update(student._id)
+     console.log("ffff",student._id);
+      // <Link to={`/students/edit/${student._id}`}>Update</Link>
+    }
+  },
   sort: true, headerStyle: {
     backgroundColor: '#FFBD33',
     color:"#000000" 

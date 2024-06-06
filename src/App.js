@@ -20,6 +20,7 @@ import More from './More'
 import Shedules from './Shedules'
 import AddStudents from './managment/student/addStudents';
 import SubjectDetails from './subject';
+import EditStudents from './managment/student/EditStudents';
 import AddTeachers from './managment/teacher/addTeachers';
 //import MarksDetails from './teachersLogin/marks';
 function App() {
@@ -35,7 +36,7 @@ function App() {
     <Routes>
     <Route exact path="/"  element={<Home/>} />  
     <Route exact path="/students"  element={<Students/>} />  
-    <Route exact path="students/edit/:id"  element={<editStudents/>} />  
+    <Route exact path="students/edit/:_id"  element={<EditStudents/>} />  
     <Route exact path="/teachers"  element={<TeacherDetails/>} />    
     <Route exact path="/attendence"  element={<Attendence/>} />   
     <Route exact path="/teacherAttendence"  element={<Attendencet/>} />   

@@ -1,26 +1,26 @@
+/* eslint-disable react-hooks/rules-of-hooks */
  
-import React, { useState } from 'react';
+import React, { useState,useEffect } from 'react';
 import { Button } from 'react-bootstrap';
-import { useMutation,queryClient } from 'react-query';
-import { createStudent, updateStudent } from '../../api';
- import { useNavigate } from 'react-router-dom';
- import { useParams } from 'react-router-dom';
- const editStudents = () => {
+import { useMutation,queryClient,useQuery } from 'react-query';
+import {   getStudentById, updateStudent } from '../../api';
+ import { useNavigate,useParams } from 'react-router-dom';
+  const editStudents = () => {
 const navigate =useNavigate()
 const { id } = useParams()
-const { data: existingStudent, isLoading: photoLoading } = useQuery(
-    ['getPhoto', id],
-    () => getPhotoById(id)
+const { data: existingStudent, isLoading: student  } = useQuery(
+    ['getStudent', id],
+    () => getStudentById(id)
   );
 
   const mutation = useMutation( id,updateStudent(id), {
     onSuccess: () => {
       queryClient.invalidateQueries('');
-      console.log('Student created successfully');
+      console.log('Student updated successfully');
       navigate('/');
     },
     onError: (error) => {
-      console.error('Error creating image:', error.respose.data);
+      console.error('Error update students:', error.respose.data);
     },
   });
 
@@ -38,7 +38,7 @@ const { data: existingStudent, isLoading: photoLoading } = useQuery(
   });
   useEffect(() => {
     if (existingStudent) {
-      setPhotoData({
+      setStudentData({
         rollNo:existingStudent.rollNo,
         name: existingStudent.name,
         age:  existingStudent.age,
@@ -173,7 +173,7 @@ const { name, value} = e.target;
       />
     </div>
     <Button type="submit" variant="primary">
-      Create Student 
+      Update Student 
     </Button>
  <Button onClick={handleClose}> close</Button>
 </form></>

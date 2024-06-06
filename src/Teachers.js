@@ -38,7 +38,44 @@ const Teachers=()=>{
     const order = sortOrder === 'asc' ? 1 : -1;
     return order * a.name.localeCompare(b.name);
   });
-
+  const customTotal = (from, to, size) => (
+    <span className="react-bootstrap-table-pagination-total   ">
+      Showing <span className='text-warning'>{ from }</span> to <span className='text-warning'>{ to }</span> of <span className='text-warning text-bold'>{ size }</span> Results
+    </span>
+  );
+  console.log(teachers.data
+     ,"ids",teachers);
+  const options = {
+    className:"bgs",
+    paginationSize: 4,
+    pageStartIndex: 0,
+    // alwaysShowAllBtns: true, // Always show next and previous button
+    // withFirstAndLast: false, // Hide the going to First and Last page button
+    // hideSizePerPage: true, // Hide the sizePerPage dropdown always
+    // hidePageListOnlyOnePage: true, // Hide the pagination list when only one page
+    firstPageText: 'First',
+    prePageText: 'Back',
+    nextPageText: 'Next',
+    lastPageText: 'Last',
+    nextPageTitle: 'First page',
+    prePageTitle: 'Pre page',
+    firstPageTitle: 'Next page',
+    lastPageTitle: 'Last page',
+    showTotal: true,
+    paginationTotalRenderer: customTotal,
+    disablePageTitle: true,
+    backgroundColor:"000000",
+    sizePerPageList: [{
+      text: '5', value: 5
+    }, {
+      text: '10', value: 10
+    }, {
+      text: 'All', value: teachers.length
+    }] // A numeric array is also available. the purpose of above example is custom the text
+  };
+  console.log(teachers,options,"sti");
+  const rowStyle = { backgroundColor: '#eef2fc',color: '#000000'};
+  
     return(<>
      <Link to={"/"} className=' btn btn-outline-warning  border-0 text-black'>back to home</Link> <h1>teachers Details</h1>
     <Form className="d-flex">
