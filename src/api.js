@@ -48,7 +48,7 @@ export const createTeachers = async (studentData) => {
   return response.data;
 };
 
-export const updateTeachers = async (studentId, studentData) => {
+export const editTeachers = async (studentId, studentData) => {
   const response = await api.put(`/teachers/${studentId}`, studentData);
   return response.data;
 };
@@ -101,3 +101,12 @@ export const deleteMarks = async (studentId) => {
   return response.data;
 };
 
+export const signup = async (username, password, role) => {
+  const response = await api.post('/auth/signup', { username, password, role });
+  return response.data;
+};
+
+export const login = async (username, password) => {
+  const response = await api.post('/auth/login', { username, password });
+  return response.data;
+};
