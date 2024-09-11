@@ -66,16 +66,19 @@ export const getMarksById = async (studentId) => {
     const response = await api.get(`/marks/${studentId}`);
     return response.data;
   };
-export const createMarks = async (markData) => {
-  const response = await api.post('/marks', markData);
-  return response.data;
-};
-
+  export const createMarks = async (markData) => {
+    const response = await api.post('/marks', markData);
+    return response.data;
+  };
+  
 export const updateMarks = async (studentId, studentData) => {
-  const response = await api.put(`/students/marks/${studentId}`, studentData);
+  const response = await api.put(`/marks/${studentId}`, studentData);
   return response.data;
 };
-
+export const deleteMarks = async (studentId) => {
+  const response = await api.delete(`/marks/${studentId}`);
+  return response.data;
+};
 //subjects
 
 export const getSubjects = async () => {
@@ -83,24 +86,73 @@ export const getSubjects = async () => {
   return response.data;
 };
 export const getSubjectsById = async (studentId) => {
-    const response = await api.get(`/students/marks/${studentId}`);
+    const response = await api.get(`/subject/${studentId}`);
     return response.data;
   };
 export const createSubjects = async (studentData) => {
-  const response = await api.post('/students/marks', studentData);
+  const response = await api.post('/subject', studentData);
   return response.data;
 };
 
 export const updateSubjects = async (studentId, studentData) => {
-  const response = await api.put(`/students/marks/${studentId}`, studentData);
+  const response = await api.put(`/subject/${studentId}`, studentData);
   return response.data;
 };
 
-export const deleteMarks = async (studentId) => {
-  const response = await api.delete(`/students/marks/${studentId}`);
+export const deleteSubjects = async (studentId) => {
+  const response = await api.delete(`/subject/${studentId}`);
   return response.data;
 };
 
+
+//timetable
+
+export const getTmietable = async () => {
+  const response = await api.get('/timetable');
+  return response.data;
+};
+export const getTimetableById = async (studentId) => {
+    const response = await api.get(`/timetable/${studentId}`);
+    return response.data;
+  };
+export const createTimetable = async (studentData) => {
+  const response = await api.post('/timetable', studentData);
+  return response.data;
+};
+
+export const updateTimetable = async (studentId, studentData) => {
+  const response = await api.put(`/timetable/${studentId}`, studentData);
+  return response.data;
+};
+
+export const deleteTimetable= async (studentId) => {
+  const response = await api.delete(`/class/${studentId}`);
+  return response.data;
+};
+//classes
+
+export const getClasses = async () => {
+  const response = await api.get('/class');
+  return response.data;
+};
+export const getClassesById = async (studentId) => {
+    const response = await api.get(`/class/${studentId}`);
+    return response.data;
+  };
+export const createClasses = async (studentData) => {
+  const response = await api.post('/class', studentData);
+  return response.data;
+};
+
+export const updateClasses = async (studentId, studentData) => {
+  const response = await api.put(`/class/${studentId}`, studentData);
+  return response.data;
+};
+
+export const deleteClasses = async (studentId) => {
+  const response = await api.delete(`/class/${studentId}`);
+  return response.data;
+};
 export const signup = async (username, password, role) => {
   const response = await api.post('/auth/signup', { username, password, role });
   return response.data;

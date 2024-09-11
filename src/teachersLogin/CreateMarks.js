@@ -1,33 +1,40 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Button, Form, Row, Col } from 'react-bootstrap';
-import { useMutation } from 'react-query';
-import { createMarks } from '../api';
+import { useMutation, useQuery } from 'react-query';
+import { createMarks, getStudents } from '../api';
 import { useNavigate } from 'react-router-dom';
- import { useQuery } from 'react-query';
-import { Link } from 'react-router-dom';
+
 const CreateMarks = () => {
-  const { data: marks, isLoading } = useQuery('Marks', createMarks);
-
   const navigate = useNavigate();
-
-  // Define initial form state
   const [marksData, setMarksData] = useState({
-    student: '', // assuming student ID or reference
+    student: '', // ID of the selected student
     internal: {
       tamil: '',
       english: '',
-      mathmaticals: '',
+      mathematics: '',
       science: '',
-      socialscience: '',
+      socialScience: '',
     },
     external: {
       tamil: '',
       english: '',
-      mathmaticals: '',
+      mathematics: '',
       science: '',
-      socialscience: '',
+      socialScience: '',
     },
   });
+
+  const [errorMessage, setErrorMessage] = useState(null);
+  const [students, setStudents] = useState([]);
+
+  // Fetch students data
+  const { data: studentData, isLoading: loadingStudents } = useQuery('students', getStudents);
+
+  useEffect(() => {
+    if (studentData) {
+      setStudents(studentData.data);
+    }
+  }, [studentData]);
 
   // Mutation for creating marks
   const mutation = useMutation(
@@ -39,6 +46,7 @@ const CreateMarks = () => {
       },
       onError: (error) => {
         console.error('Error creating marks:', error);
+        setErrorMessage('Failed to create marks. Please try again.');
       },
     }
   );
@@ -69,17 +77,27 @@ const CreateMarks = () => {
   return (
     <Form onSubmit={handleSubmit} className="p-4 shadow-sm rounded bg-light">
       <h3 className="text-center mb-4">Add Marks</h3>
+      
+      {errorMessage && <p className="text-danger">{errorMessage}</p>} {/* Display error if it occurs */}
+
       <Row className="mb-3">
         <Col md={6}>
           <Form.Group controlId="student">
-            <Form.Label>Student ID</Form.Label>
+            <Form.Label>Student</Form.Label>
             <Form.Control
-              type="text"
+              as="select"
               name="student"
               value={marksData.student}
               onChange={handleChange}
               required
-            />
+            >
+              <option value="">Select a student</option>
+              {students.map(student => (
+                <option key={student._id} value={student._id}>
+                  {student.name}
+                </option>
+              ))}
+            </Form.Control>
           </Form.Group>
         </Col>
       </Row>
@@ -90,7 +108,7 @@ const CreateMarks = () => {
           <Form.Group controlId="internal.tamil">
             <Form.Label>Tamil</Form.Label>
             <Form.Control
-              type="text"
+              type="number"
               name="internal.tamil"
               value={marksData.internal.tamil}
               onChange={handleChange}
@@ -102,7 +120,7 @@ const CreateMarks = () => {
           <Form.Group controlId="internal.english">
             <Form.Label>English</Form.Label>
             <Form.Control
-              type="text"
+              type="number"
               name="internal.english"
               value={marksData.internal.english}
               onChange={handleChange}
@@ -113,12 +131,12 @@ const CreateMarks = () => {
       </Row>
       <Row className="mb-3">
         <Col md={6}>
-          <Form.Group controlId="internal.mathmaticals">
+          <Form.Group controlId="internal.mathematics">
             <Form.Label>Mathematics</Form.Label>
             <Form.Control
-              type="text"
-              name="internal.mathmaticals"
-              value={marksData.internal.mathmaticals}
+              type="number"
+              name="internal.mathematics"
+              value={marksData.internal.mathematics}
               onChange={handleChange}
               required
             />
@@ -128,7 +146,7 @@ const CreateMarks = () => {
           <Form.Group controlId="internal.science">
             <Form.Label>Science</Form.Label>
             <Form.Control
-              type="text"
+              type="number"
               name="internal.science"
               value={marksData.internal.science}
               onChange={handleChange}
@@ -139,12 +157,12 @@ const CreateMarks = () => {
       </Row>
       <Row className="mb-3">
         <Col md={6}>
-          <Form.Group controlId="internal.socialscience">
+          <Form.Group controlId="internal.socialScience">
             <Form.Label>Social Science</Form.Label>
             <Form.Control
-              type="text"
-              name="internal.socialscience"
-              value={marksData.internal.socialscience}
+              type="number"
+              name="internal.socialScience"
+              value={marksData.internal.socialScience}
               onChange={handleChange}
               required
             />
@@ -158,7 +176,7 @@ const CreateMarks = () => {
           <Form.Group controlId="external.tamil">
             <Form.Label>Tamil</Form.Label>
             <Form.Control
-              type="text"
+              type="number"
               name="external.tamil"
               value={marksData.external.tamil}
               onChange={handleChange}
@@ -170,7 +188,7 @@ const CreateMarks = () => {
           <Form.Group controlId="external.english">
             <Form.Label>English</Form.Label>
             <Form.Control
-              type="text"
+              type="number"
               name="external.english"
               value={marksData.external.english}
               onChange={handleChange}
@@ -181,12 +199,12 @@ const CreateMarks = () => {
       </Row>
       <Row className="mb-3">
         <Col md={6}>
-          <Form.Group controlId="external.mathmaticals">
+          <Form.Group controlId="external.mathematics">
             <Form.Label>Mathematics</Form.Label>
             <Form.Control
-              type="text"
-              name="external.mathmaticals"
-              value={marksData.external.mathmaticals}
+              type="number"
+              name="external.mathematics"
+              value={marksData.external.mathematics}
               onChange={handleChange}
               required
             />
@@ -196,7 +214,7 @@ const CreateMarks = () => {
           <Form.Group controlId="external.science">
             <Form.Label>Science</Form.Label>
             <Form.Control
-              type="text"
+              type="number"
               name="external.science"
               value={marksData.external.science}
               onChange={handleChange}
@@ -207,12 +225,12 @@ const CreateMarks = () => {
       </Row>
       <Row className="mb-3">
         <Col md={6}>
-          <Form.Group controlId="external.socialscience">
+          <Form.Group controlId="external.socialScience">
             <Form.Label>Social Science</Form.Label>
             <Form.Control
-              type="text"
-              name="external.socialscience"
-              value={marksData.external.socialscience}
+              type="number"
+              name="external.socialScience"
+              value={marksData.external.socialScience}
               onChange={handleChange}
               required
             />
@@ -221,8 +239,8 @@ const CreateMarks = () => {
       </Row>
       
       <div className="d-flex justify-content-between mt-4">
-        <Button type="submit" variant="warning">
-          Add Marks
+        <Button type="submit" variant="warning" disabled={mutation.isLoading}>
+          {mutation.isLoading ? 'Submitting...' : 'Add Marks'}
         </Button>
       </div>
     </Form>

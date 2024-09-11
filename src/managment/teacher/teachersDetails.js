@@ -10,19 +10,26 @@ const TeacherDetails = () => {
   const { SearchBar } = Search;
 
   // Fetch teachers data using react-query
-  const { data: teachers, isLoading } = useQuery('teacher', getTeachers);
+  const { data: response, isLoading, isError } = useQuery('teacher', getTeachers);
+  const teachers = response?.data || [];
 
-  // Show loading spinner while fetching data
   if (isLoading) {
     return <Spinners />;
   }
 
-  // Redirect to the edit page with the teacher's ID
+  if (isError) {
+    return <div>Error loading teachers data. Please try again later.</div>;
+  }
+
+  // If teachers is not an array, handle it appropriately
+  if (!Array.isArray(teachers)) {
+    return <div>Data format is incorrect. Please check the API response.</div>;
+  }
+
   const update = (id) => {
     navigate(`/teachers/edit/${id}`);
   };
 
-  // Table columns definition with sorting and formatted data
   const columns = [
     {
       dataField: '_id',
@@ -61,23 +68,17 @@ const TeacherDetails = () => {
     {
       dataField: 'address',
       text: 'Address',
-      // Formatting address to display as a single string
       formatter: (cell) => {
-        if (cell && cell.street && cell.city && cell.state && cell.zip_code) {
-          return `${cell.street}, ${cell.city}, ${cell.state}, ${cell.zip_code}`;
-        } else {
-          return 'N/A';  // Handle case where address may be missing
-        }
+        return cell ? `${cell.street || ''}, ${cell.city || ''}, ${cell.state || ''}, ${cell.zip_code || ''}` : 'N/A';
       },
       headerAlign: 'center',
     },
     {
       dataField: '_id',
       text: 'Actions',
-      // Button for editing teacher details
       formatter: (cell, row) => (
         <button
-          className="btn btn-outline-info"
+          className="btn btn-outline-warning"
           onClick={() => update(row._id)}
         >
           Edit
@@ -86,38 +87,25 @@ const TeacherDetails = () => {
       headerAlign: 'center',
     },
   ];
-
+ 
   return (
     <>
-      {/* Button to add a new teacher */}
       <Link to="/createTeacher" className='btn btn-outline-warning m-3'>
         <span className='text-black'>Add Teacher</span>
       </Link>
-      
-      {/* Search and Table to display teacher data */}
-      <ToolkitProvider
-        keyField="_id"
-        data={teachers || []}
-        columns={columns}
-        search
-      >
-        {
-          props => (
-            <div>
-              {/* Search bar */}
-              <SearchBar
-                className="border border-warning border-opacity-50"
-                {...props.searchProps}
-              />
-              <hr />
-              
-              {/* Table showing teacher details */}
-              <BootstrapTable
-                {...props.baseProps}
-              />
-            </div>
-          )
-        }
+      <ToolkitProvider keyField="_id" data={teachers} columns={columns} search>
+        {props => (
+          <div>
+            <SearchBar
+              className="border border-warning border-opacity-50"
+              {...props.searchProps}
+            />
+            <hr />
+            <BootstrapTable
+              {...props.baseProps}
+            />
+          </div>
+        )}
       </ToolkitProvider>
     </>
   );
